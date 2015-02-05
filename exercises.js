@@ -1,3 +1,5 @@
+var _ = require(underscore);
+
 // Hey Iron Yard Hackers! Enjoy!
 // Make sure to open your js consoles!
 
@@ -37,32 +39,50 @@ function expect(target) {
 // 
 // Only add code to *THIS* section!
 
-var Dog = function(options) {
-	'use strict';
-	options = options || {}; // <== if options is undefined, creates empty object, defines options
+//var Dog = function(options) {
+//	'use strict';
+//	options = options || {}; // <== if options is undefined, creates empty object, defines options
 	//this.color = options.color;
 	//this.status = "normal";
 	//this.hungry = options.hungry === undefined ? true : options.hungry; // <== if undefined, make options.hungry true
-	_.defaults(options, {
-		hungry: true,
-		status: "normal",
-		cool: true
-	});
-	_.extend(this.options);
-}
+//	_.defaults(options, {
+//		hungry: true,
+//		status: "normal",
+//		cool: true
+//	});
+//	_.extend(this.options);
+//}
 
-function Human() {
-	'use strict';
-}
+//function Human() {
+//	'use strict';
+//}
 
-Human.prototype.pet = function(disposition) {
+//Human.prototype.pet = function(disposition) {
 	
-	disposition.status = "happy";
+//	disposition.status = "happy";
 
+//};
+
+//Human.prototype.feed = function(){
+//	dog.hungry = false;
+//};
+
+var Dog = function(options) {
+
+	this.hungry = options.hungry;
+	for (opt in options) {
+		this.opt = options[opt];
+	}
 };
 
-Human.prototype.feed = function(){
-	dog.hungry = false;
+Dog.prototype.status = 'normal';
+Dog.prototype.color = 'black';
+Dog.prototype.hungry = true;
+
+var Human = function() {};
+
+Human.prototype.pet = function(target) {
+	target.status = 'happy';
 };
 
 //        __                
@@ -108,7 +128,6 @@ var julia = new Human({
   expect(sadie.status).toBe('normal');
   mason.pet(sadie);
   expect(sadie.status).toBe('happy');
-});
 
 it("should make Sadie black", function(){
   expect(sadie.color).toBe('black');
