@@ -81,7 +81,13 @@ Dog.prototype.status = 'normal';
 Dog.prototype.color = 'black';
 Dog.prototype.hungry = true;
 
-var Human = function() {};
+var Human = function(options) {
+	var options = options || {};
+	_.defaults(options, {
+		cool: false
+	});
+	_.extend(this, options);
+};
 
 Human.prototype.pet = function(target) {
 	target.status = 'happy';
