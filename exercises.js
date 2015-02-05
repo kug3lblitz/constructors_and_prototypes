@@ -1,4 +1,4 @@
-var _ = require(underscore);
+var _ = require('underscore');
 
 // Hey Iron Yard Hackers! Enjoy!
 // Make sure to open your js consoles!
@@ -69,10 +69,12 @@ function expect(target) {
 
 var Dog = function(options) {
 
-	this.hungry = options.hungry;
-	for (opt in options) {
-		this.opt = options[opt];
-	}
+	var options = options || {};
+	_.defaults(options, {
+		hungry: true,
+		color: 'black',
+	});
+	_.extend(this, options);
 };
 
 Dog.prototype.status = 'normal';
@@ -83,6 +85,10 @@ var Human = function() {};
 
 Human.prototype.pet = function(target) {
 	target.status = 'happy';
+};
+
+Human.prototype.feed = function(target) {
+	target.hungry = false;
 };
 
 //        __                
